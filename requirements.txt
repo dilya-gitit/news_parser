@@ -1,0 +1,5 @@
+APScheduler
+Django
+djangorestframework
+psycopg2-binary
+finnhub-python
