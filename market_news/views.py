@@ -1,7 +1,7 @@
 from datetime import timedelta
-from django.http import Http404
 
 import finnhub
+from django.http import Http404
 from django.utils import timezone
 from rest_framework import generics, viewsets
 
@@ -15,7 +15,7 @@ class NewsListView(generics.ListAPIView):
     serializer_class = NewsSerializer
 
     def get_queryset(self):
-        
+
         date_from = self.request.query_params.get("date_from")
         date_to = self.request.query_params.get("date_to")
 
@@ -24,28 +24,30 @@ class NewsListView(generics.ListAPIView):
 
         if date_to:
             try:
-                date_to = timezone.now().strptime(date_to, "%Y-%m-%d") + timedelta(days=1)
+                date_to = timezone.now().strptime(date_to, "%Y-%m-%d") + timedelta(
+                    days=1
+                )
                 queryset = queryset.filter(datetime__lte=date_to)
             except ValueError:
-                raise Http404('Invalid date format.')
+                raise Http404("Invalid date format.")
 
         if date_from:
             try:
                 date_from = timezone.now().strptime(date_from, "%Y-%m-%d")
                 queryset = queryset.filter(datetime__gte=date_from)
             except ValueError:
-                raise Http404('Invalid date format.')
-               
+                raise Http404("Invalid date format.")
+
         if not queryset.exists():
-            raise Http404('No news found for the given parameters.')
-        
+            raise Http404("No news found for the given parameters.")
+
         return queryset
 
 
 class NewsViewSet(viewsets.ModelViewSet):
     def fetch_data():
         finnhub_client = finnhub.Client(
-            api_key="chb2bo1r01qkns31bh20chb2bo1r01qkns31bh2g"
+            api_key="chbo74hr01qmso50v9ugchbo74hr01qmso50v9v0"
         )
         ticker_list = ["TSLA", "META", "AMZN", "TWTR", "NFLX"]
 

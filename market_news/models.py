@@ -14,3 +14,4 @@ class News(models.Model):
     source = models.CharField(max_length=100)
     summary = models.TextField()
     url = models.TextField()
+    
