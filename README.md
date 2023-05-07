@@ -22,12 +22,10 @@ The following are needed to run this web application:
 ## Install
 Once the prerequisites are installed, execute the following commands from the project's root:
 ```bash
-docker build --tag=app .
-```
-This will build the container from the image. Next command will run the container:
-```bash
 docker-compose up
 ```
+This command creates Docker container and runs it.
+
 ## Usage
 
 You can access the API endpoints by pasting the following URL in your browser or Postman: 
@@ -67,5 +65,9 @@ yesterday = timezone.now() - timezone.timedelta(days=1)
 By updating these parameters, you can customize the behavior of the microservice according to your needs.
 
 ### Very important
-When you've made any changes in the source code, to see them, you have to re-build the image and compose the Docker container again as described in the "Install" section of this file.
+When you've made any changes in the source code, to see them, you have to re-build the image and compose the Docker container again. Run:
+```bash
+docker build --tag=app . && docker-compose up
+```
+
 
