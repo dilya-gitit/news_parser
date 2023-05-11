@@ -1,6 +1,5 @@
 # Finnhub Stock Market News Parser
 
-Test assignment for [zimran.io](https://zimran.io/)
 
 Consists of two parts:
 1.  Microservice to parse and store Stock market news every hour through the API in [Finnhub.io](https://finnhub.io/)
